@@ -196,7 +196,7 @@ def get_list_of_files(directory):
 
 
 def verify_problem():
-    problem = load_data(PROBLEM_JSON, ['name', 'title', 'type', 'time_limit', 'memory_limit'])
+    problem = load_data(PROBLEM_JSON, ['code', 'title', 'type', 'time_limit', 'memory_limit'])
     if problem is None:
         return problem
 
@@ -230,7 +230,7 @@ def verify_problem():
         if prob_name != git_main_remote_name:
             warning('problem name and git project name are not the same')
 
-    check_problem_name(problem['name'])
+    check_problem_name(problem['code'])
 
     if not isinstance(problem['title'], string_types):
         error('title is not a string')

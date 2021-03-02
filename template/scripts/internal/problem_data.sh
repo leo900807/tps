@@ -1,7 +1,7 @@
 
 #sets the problem related variables from file problem.json
 
-PROBLEM_NAME="$("${PYTHON}" "${INTERNALS}/json_extract.py" "${PROBLEM_JSON}" "name")"
+PROBLEM_NAME="$("${PYTHON}" "${INTERNALS}/json_extract.py" "${PROBLEM_JSON}" "code")"
 PROBLEM_TYPE="$("${PYTHON}" "${INTERNALS}/json_extract.py" "${PROBLEM_JSON}" "type")"
 HAS_GRADER="$("${PYTHON}" "${INTERNALS}/json_extract.py" "${PROBLEM_JSON}" "has_grader" 2> /dev/null)" || true
 HAS_MANAGER="$("${PYTHON}" "${INTERNALS}/json_extract.py" "${PROBLEM_JSON}" "has_manager" 2> /dev/null)" || true
