@@ -1,3 +1,4 @@
+#define CMS
 #include "testlib.h"
 #include <string>
 using namespace std;
