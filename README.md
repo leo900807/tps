@@ -36,7 +36,9 @@
 
 測資生成器會放置於這個資料夾  
 
-<font color="red"><B>請盡量讓生成器接收同樣的參數時可以產生同樣的測資，避免因為產生非預期的測資而沒卡到要卡的東西，建議可以使用</B></font> [testlib.h](https://github.com/MikeMirzayanov/testlib)
+<font color="red"><B>請盡量讓生成器接收同樣的參數時可以產生同樣的測資，避免因為產生非預期的測資而沒卡到要卡的東西，建議可以使用</B></font> [testlib.h](https://github.com/cms-dev/cms/blob/master/cmscontrib/loaders/polygon/testlib.h)  
+
+**CMS 版本的 testlib.h 有修改過以符合 CMS，請直接複製** `template/` **資料夾中的使用**
 
 ### gen/data
 
