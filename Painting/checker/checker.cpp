@@ -12,7 +12,7 @@ void wa() {
 }
 
 int main(int argc, char *argv[]) {
-	registerChecker("Painting", argc, argv);
+	registerTestlibCmd(argc, argv);
     int n, m, cnt = 0;
     n = inf.readInt();
     m = inf.readInt();
