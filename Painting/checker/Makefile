@@ -9,4 +9,4 @@ clean:
 	rm -f *.exe
 
 %.exe: %.cpp testlib.h
-	g++ -std=c++11 -Wall -Wextra -O2 $< -o $@
+	g++ -std=c++14 -DCMS -Wall -Wextra -O2 $< -o $@
