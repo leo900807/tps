@@ -15,6 +15,7 @@
 	"min_submission_interval": 60,
 	"min_user_test_interval": null,
 	"score_precision": 2,
+	"task_type": "Batch",
 	"score_mode": "max_subtask",
 	"task_type_params": "{\"task_type_parameters_Batch_compilation\": \"alone\"}",
 	"score_type": "GroupMin"
