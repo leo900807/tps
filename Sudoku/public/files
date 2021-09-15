@@ -1,0 +1,4 @@
+copy_test_inputs gen/data tests tests
+
+public examples/01.in
+public examples/01.out

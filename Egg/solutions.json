@@ -1,0 +1,8 @@
+{
+	"sol.cpp": {
+		"verdict": "model_solution"
+	},
+	"sol.py": {
+		"verdict": "correct"
+	}
+}
