@@ -1,6 +1,5 @@
 {
 	"code": "Egg",
-	"name": "Egg",
 	"title": "丟雞蛋問題",
 	"memory_limit": 512,
 	"time_limit": 1.0,

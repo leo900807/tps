@@ -1,6 +1,5 @@
 {
 	"code": "Sudoku",
-	"name": "Sudoku",
 	"title": "數獨",
 	"memory_limit": 512,
 	"time_limit": 10.0,

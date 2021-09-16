@@ -45,9 +45,9 @@ GEN_DATA_RELATIVE = get_relative(GEN_DATA)
 SUBTASKS_JSON_RELATIVE = get_relative(SUBTASKS_JSON)
 
 #TODO read these variables from problem.json
-has_markdown_statement = True
+has_markdown_statement = False
 
-git_enabled = True
+git_enabled = False
 git_remote_name = "origin"
 
 valid_problem_types = ('Batch', 'Communication', 'OutputOnly', 'TwoSteps')
