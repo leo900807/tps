@@ -3,13 +3,22 @@
 		"verdict": "model_solution"
 	},
 	"par.cpp": {
-		"verdict": "partially_correct"
+		"verdict": "partially_correct",
+		"except": {
+			"samples": "incorrect",
+			"s1": "correct",
+			"s2": "correct"
+		}
 	},
 	"wa1.cpp": {
 		"verdict": "incorrect"
 	},
 	"wa2.cpp": {
-		"verdict": "incorrect"
+		"verdict": "incorrect",
+		"except": {
+			"s1": "correct",
+			"s2": "correct"
+		}
 	},
 	"wa3.cpp": {
 		"verdict": "incorrect"
