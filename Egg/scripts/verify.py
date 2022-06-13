@@ -46,8 +46,9 @@ SUBTASKS_JSON_RELATIVE = get_relative(SUBTASKS_JSON)
 
 #TODO read these variables from problem.json
 has_markdown_statement = False
+has_tex_statement = True
 
-git_enabled = False
+git_enabled = True
 git_remote_name = "origin"
 
 valid_problem_types = ('Batch', 'Communication', 'OutputOnly', 'TwoSteps')
@@ -227,8 +228,8 @@ def verify_problem():
         except subprocess.CalledProcessError:
             warning('could not get git remote url for "{}"'.format(git_remote_name))
             return
-        if prob_name != git_main_remote_name:
-            warning('problem name and git project name are not the same')
+        if prob_name != os.path.basename(BASE_DIR):
+            warning('problem name and the base directory name are not the same')
 
     check_problem_name(problem['code'])
 
@@ -255,12 +256,30 @@ def verify_problem():
         except IOError:
             warning('statement does not exist')
 
+    if has_tex_statement:
+        try:
+            with open(os.path.join(STATEMENT_DIR, 'statement.tex'), 'r') as f:
+                first_line = None
+                for line in f.readlines():
+                    if line.strip() != '':
+                        first_line = line
+                        break
+
+                if first_line is None:
+                    warning('statement is empty')
+                elif first_line.strip() != '\\input{config.tex}':
+                    warning('statement does not start with \\input{config.tex}')
+        except IOError:
+            warning('statement does not exist')
+
     if not isinstance(problem['type'], string_types) or problem['type'] not in valid_problem_types:
         error('type should be one of {}'.format('/'.join(valid_problem_types)))
 
     if 'has_grader' in problem:
         if not isinstance(problem['has_grader'], bool):
             error('has_grader should be a boolean')
+        elif problem['has_grader'] is True and problem['task_type_params'] != '{\"task_type_parameters_Batch_compilation\": \"grader\"}':
+            warning('\"task_type_params\" is not {\"task_type_parameters_Batch_compilation\": \"grader\"}, but \"has_grader\" is true')
         else:
             if problem['type'] == 'OutputOnly' and problem['has_grader'] is True:
                 warning('output only problems could not have grader')
@@ -328,6 +347,7 @@ def verify_subtasks():
         if not isinstance(validators_list, list):
             error('"{}" is not an array{}'.format(key, parLoc))
             return
+        validators_count = 0
         for index, validator_cmd_line in enumerate(validators_list):
             if not isinstance(validator_cmd_line, string_types):
                 error('{} validator #{} is not a string{}'.format(name, index+1, parLoc))
@@ -338,7 +358,10 @@ def verify_subtasks():
                     error('File not found for {} validator "{}"{}'.format(name, validator_cmd, parLoc))
                 else:
                     used_validators.add(validator_cmd)
+                    validators_count += 1
 
+        if validators_count == 0 and parName is None:
+            warning('{} validator is present but remain empty'.format(name))
 
     check_validator_key(subtasks_data, k_glob, 'global')
     check_validator_key(subtasks_data, k_sub, 'subtask-sensitive')
@@ -395,7 +418,7 @@ def verify_subtasks():
             warning('Unused validator file "{}"'.format(unused_validator))
 
     if score_sum != 100:
-        error('sum of scores is {}'.format(score_sum))
+        warning('sum of scores is {}'.format(score_sum))
 
     for i in range(len(subtasks)):
         if i+(0 if hasSamples else 1) not in indexes:
@@ -541,18 +564,20 @@ def verify():
     Verification.namespace = get_relative(PROBLEM_JSON)
     Verification.problem = verify_problem()
 
-    Verification.namespace = SUBTASKS_JSON_RELATIVE
-    subtasks = verify_subtasks()
+    if Verification.problem is not None:
+        Verification.namespace = SUBTASKS_JSON_RELATIVE
+        subtasks = verify_subtasks()
 
-    Verification.namespace = GEN_DATA_RELATIVE
-    verify_gen_data(subtasks)
+        if subtasks is not None:
+            Verification.namespace = GEN_DATA_RELATIVE
+            verify_gen_data(subtasks)
 
-    Verification.namespace = get_relative(SOLUTIONS_JSON)
-    verify_solutions(subtasks)
+            Verification.namespace = get_relative(SOLUTIONS_JSON)
+            verify_solutions(subtasks)
 
-    Verification.namespace = 'not found'
-    verify_existence(necessary_files)
-    verify_existence_warn(semi_necessary_files)
+            Verification.namespace = 'not found'
+            verify_existence(necessary_files)
+            verify_existence_warn(semi_necessary_files)
 
     Verification.report()
 
