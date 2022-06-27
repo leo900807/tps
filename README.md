@@ -1,6 +1,6 @@
 # TPS 使用說明
 
-[Readme file on HackMD](https://hackmd.io/@leo900807/TPS-tutorial)
+[Readme file on HackMD](https://hackmd.io/@leo900807/new-TPS-tutorial)
 
 - [題目結構](#題目結構)
 - [TPS 指令](#TPS-指令)
@@ -145,7 +145,7 @@ TPS 使用的腳本，基本上不會動到
 
 ## TPS 指令
 
-<font color="red"><B>如果不是在我們的工作站的話需先安裝 tps 及相關套件</B></font>
+<font color="red"><B>tps 使用 Python 執行，請先安裝 Python >= 3.6 及相關套件</B></font>
 
 ```
 $ sudo ./install-tps.sh
@@ -166,6 +166,6 @@ $ sudo pip install psutil  # for "tps invoke"
 
 ### invoke
 
-在題目資料夾下 `tps invoke <solution file>` 測試該程式碼的輸出與標準程式輸出的比較結果  
+在題目資料夾下 `tps invoke <solution-file>` 測試該程式碼的輸出與標準程式輸出的比較結果  
 
 且該程式碼執行時會受到時間與記憶體限制，可選參數可以藉由 `tps invoke --help` 得知
