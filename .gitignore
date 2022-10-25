@@ -2,6 +2,8 @@
 /*/sandbox/
 /*/tests/
 /*/logs/
+*.aux
+*.log
 
 # Public graders
 /*/public/*/grader.*

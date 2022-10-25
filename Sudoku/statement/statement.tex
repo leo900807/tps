@@ -1,14 +1,19 @@
 \input{config.tex}
 
 \begin{document}
+
 \section*{\bd{第四題：數獨(Sudoku) \color{blue}{[此題為 Output Only]}}}
+
 \subsection*{\bd{問題敘述}}
+
 「數獨」是一款益智遊戲，在遊戲的一開始會有一個 $n^2\times n^2$ 的表格，其中這整張表格變切成了 $n^2$ 塊區域，每一塊區域內都有 $n\times n$ 個格子。每個格子可以是空的，也可以包含一個 $1\sim n^2$ 的數字。一個合法的數獨同時會滿足以下條件：
+
 \begin{enumerate}
     \item 所有在同一列的數字皆兩兩相異。
     \item 所有在同一行的數字皆兩兩相異。
     \item 所有在同一子區域的數字皆兩兩相異。
 \end{enumerate}
+
 下圖是兩個合法的數獨範例，兩個數獨內皆不包含空的格子：
 
 \begin{figure}[htp]
@@ -19,42 +24,48 @@
 現在，給你一些尚有一些空格子的合法數獨，請你試圖填入盡可能多的數字並保持該數獨一直都是合法的。保證給定的數獨至少存在一種填滿所有空格子的填數字方法。
 
 本題為一 output only 的任務，並且會部分給分。你將會拿到 10 個輸入檔，說明每一個未完成數獨的樣子。對於每一個輸入檔，你應該繳交一個輸出檔，該檔案描述一組填入一些數字後的成果。對於一個合法的數獨成果，你的成績將依照填入數字的多寡做相應的評分。
+
 \subsection*{\bd{輸入格式}}
+
 每一個輸入檔之格式如下：
 
 首行輸入一個整數 $n$。
 
 接下來 $n^2$ 行，第 $i$ 行將有 $n^2$ 個正整數 $A[i][1]\;A[i][2]\;\cdots\;A[i][n^2]$ 以空格隔開。其中 $0$ 代表該格子為空。
+
 \subsection*{\bd{輸出格式}}
+
 輸出 $n^2$ 行，第 $i$ 行將有 $n^2$ 個正整數 $B[i][1]\;B[i][2]\;\cdots\;B[i][n^2]$ 以空格隔開。代表你填入數字後的成果。
+
 \subsection*{\bd{測資限制}}
+
 \begin{itemize}
     \item $2\le n\le 20$。
     \item $0\le A[i][j]\le n^2$。
     \item 給定的數獨 $A$ 是合法的，且保證至少存在一種填滿所有空格子的填數字方法。
 \end{itemize}
+
 \subsection*{\bd{輸入範例 1}}
-{
-\setlength\parindent{0pt}
-\td{
-2\\
-0 2 0 0\\
-3 0 0 0\\
-0 0 4 0\\
+
+\begin{tests}
+2
+0 2 0 0
+3 0 0 0
+0 0 4 0
 0 0 0 1
-}
-}
+\end{tests}
+
 \subsection*{\bd{輸出範例 1}}
-{
-\setlength\parindent{0pt}
-\td{
-4 2 3 0\\
-3 1 2 4\\
-1 3 4 2\\
+
+\begin{tests}
+4 2 3 0
+3 1 2 4
+1 3 4 2
 2 4 0 1
-}
-}
+\end{tests}
+
 \subsection*{\bd{評分說明}}
+
 一個被視為 \bd{「合法」} 的輸出檔，必須滿足以下所有條件：
 
 \begin{itemize}
@@ -74,6 +85,7 @@
 \end{itemize}
 
 詳見下表。本題共有 10 個測試資料檔案，條件限制如下所示。
+
 \begin{center}
     \begin{tabular}[t]{@{}cccl@{}}
     \toprule

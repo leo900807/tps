@@ -1,3 +1,8 @@
+# Task Prepare System for [CMS](https://cms-dev.github.io/)
+
+This system is based on [Official TPS](https://github.com/ioi-2017/tps).  
+This TPS version is a modified version by baluteshih and me.
+
 # TPS 使用說明
 
 [Readme file on HackMD](https://hackmd.io/@leo900807/new-TPS-tutorial)

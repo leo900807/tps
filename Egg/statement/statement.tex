@@ -1,10 +1,15 @@
 \input{config.tex}
 
 \begin{document}
+
 \section*{\bd{第三題：丟雞蛋問題(Egg) \color{blue}{[此題為互動題 Interactive]}}}
+
 \subsection*{\bd{問題敘述}}
+
 丟雞蛋問題是一個經典的題目，你現在正身處於一棟 $M$ 層樓高的大樓，手上有 $60$ 顆一模一樣的雞蛋，已知這些雞蛋只要在\bd{\color{red}{超過 $h$ 樓}}的地方將其摔出就會破裂；不超過則不會。但由於我們目前還不知道 $h$ 是多少，請你在摔完這些雞蛋之前，回答出 $h$ 的值。
+
 \subsection*{\bd{實作細節}}
+
 \subsubsection*{\bd{C++}}
 
 你需要在首行加入 \texttt{\#include "Egg.h"}，並完成以下函式：
@@ -64,9 +69,11 @@ def height_limit(M: int) -> int:
 如果不符合上述條件限制，你的程式會被判為 \bd{Wrong Answer}；否則你的程式會被判斷為 \bd{Accepted}。
 
 \subsection*{\bd{互動範例}}
+
 考慮以下的測試資料： $M=10, h=4$。
 
 一個被評分程式判斷為 \bd{Accepted} 的互動例子顯示如下：
+
 \begin{center}
     \begin{tabular}[t]{@{}ll@{}}
     \toprule
@@ -82,8 +89,11 @@ def height_limit(M: int) -> int:
     \bottomrule
     \end{tabular}
 \end{center}
+
 \subsection*{\bd{評分說明}}
+
 本題共有 $4$ 組測試題組，條件限制如下所示。每一組可有一或多筆測試資料，該組所有測試資料皆需答對才會獲得該組分數。
+
 \begin{center}
     \begin{tabular}[t]{@{}ccl@{}}
     \toprule
@@ -100,13 +110,17 @@ def height_limit(M: int) -> int:
 \newpage
 
 \subsection*{\bd{範例評分程式}}
+
 範例評分程式以下列格式讀取輸入：
+
 \begin{itemize}
     \item 第一列： $M\;h$
 \end{itemize}
+
 其中 $M,h$ 如題目所述。\\
 
 \bd{請注意：使用自己上傳的測試資料進行測試時，沒有下面 MSG 描述的情形時你會得到 Accepted。}如果你的程式被評為 \bd{Accepted}，範例評分程式會輸出 Accepted: $q$，其中 $q$ 表示呼叫 \texttt{is\_broken} 函式的總次數。如果你的程式被評為 \bd{Wrong Answer}，範例評分程式會輸出 Wrong Answer： MSG，其中 MSG 格式與意義如下：
+
 \begin{itemize}
     \item invalid broken query: 不合法的 \texttt{is\_broken} 呼叫。
     \item too many queries: 呼叫上述函式的總次數超過 $60$ 次。
@@ -114,6 +128,7 @@ def height_limit(M: int) -> int:
 \end{itemize}
 
 在 CMS 內的附件檔案中，有一個名為「Egg.zip」的壓縮檔，下載後解壓縮可以找到三個資料夾「cpp」、「py」和「examples」，資料夾的意義分別為：
+
 \begin{itemize}
     \item cpp: 內部包含一個檔案「Egg.cpp」，你可以直接上傳該檔案來獲得 12 分，並且往後你要寫的程式都可以參考這份檔案，並在這份檔案內進行修改、編譯及執行。
 

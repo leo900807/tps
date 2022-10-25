@@ -1,0 +1,12 @@
+# Ignore everything
+*
+
+# But not these files...
+!.gitignore
+!SourceHanSansTW-Bold.ttf
+!Monaco.ttf
+!DIN-BoldAlternate Regular.otf
+!config.tex
+!logo.png
+!NotoSerifCJKtc-Regular.otf
+!NotoSansTC-Bold.otf

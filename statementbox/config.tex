@@ -1,0 +1,117 @@
+\documentclass[10pt, a4paper]{article}
+\usepackage[top=3cm, bottom=3cm, left=2cm, right=2cm]{geometry} % 上下左右距離邊緣 2cm
+\usepackage{amsmath, amsthm, amssymb}   % AMS 數學環境
+\usepackage{enumitem}   % enumerate itemize
+\usepackage{xeCJK}      % 中文
+\usepackage{fontspec}   % 設定字體
+\usepackage{anyfontsize}    % \fontsize{}{}
+\usepackage{graphicx}   % 圖片
+\usepackage{caption}    % for \caption*
+\usepackage{fancyhdr}   % 頁首頁尾
+\usepackage{titlesec}   % 設定 section 字體、\titlespacing
+\usepackage{tabularx, makecell} % 加強版表格
+\usepackage{hyperref}   % 超連結
+\usepackage{xcolor}     % 文字顏色
+\usepackage{ulem}       % 底線
+\usepackage{eso-pic}    % 圖標
+\usepackage{booktabs}   % 表格線條
+\usepackage{listings}   % 程式碼上色
+\usepackage{indentfirst}    % 縮排
+\usepackage{setspace}   % 行間距
+\usepackage{seqsplit}   % 換行
+\usepackage{fancyvrb}
+\usepackage[T1]{fontenc}
+
+% 設定 section, subsection 字體
+\titleformat*{\section}{\fontsize{15.5}{15.5}\selectfont\bfseries}
+\titleformat*{\subsection}{\fontsize{13}{13}\selectfont\bfseries}
+
+% 設定 math mode 字體
+\DeclareMathSizes{10}{12}{7}{5}
+\setlength{\mathsurround}{1.0pt}
+
+\XeTeXlinebreaklocale "zh"  % 中文自動換行
+\XeTeXlinebreakskip = 0pt plus 1pt  % 文字的彈性間距
+\linespread{1.35}\selectfont  % 行距
+\setlength{\parskip}{1.8ex} % 段落間距
+\setitemize[1]{itemsep=-4pt,partopsep=0pt,parsep=1ex,topsep=5pt} % itemize 間距
+\setenumerate[1]{itemsep=0pt,partopsep=0pt,parsep=\parskip,topsep=5pt} % enumerate 間距
+\setlength{\parindent}{2em} % 縮排
+
+% 設定 section 左邊的 hspace 以及上下的 vspace
+\titlespacing\section{0pt}{12pt plus 4pt minus 2pt}{10pt plus 2pt minus 2pt}
+\titlespacing\subsection{0pt}{16pt plus 4pt minus 2pt}{10pt plus 2pt minus 2pt}
+
+% 設定中文字型
+\setCJKmainfont[AutoFakeBold=4]{Noto Serif CJK TC} % 一般中文字體
+\newcommand{\chfont}{SourceHanSansTW-Bold.ttf} % 標題字體
+\setCJKfamilyfont{\chfont}{\chfont}[AutoFakeBold = 3]
+
+% 設定英文字型
+% \setmainfont{Times New Roman}
+% \usepackage{newtxtext}
+\setmonofont{Monaco.ttf}
+
+\newcommand{\myhref}[2]{\textcolor{blue}{\href{#1}{#2}}}
+\newcommand{\highlight}[2]{\textcolor{#1}{\textbf{#2}}}
+\newcommand{\td}[1]{{\setmainfont{Monaco.ttf}{#1}}}  % 測資、程式碼字體
+% \newcommand{\td}[1]{{\begin{spacing}{1.2}\setmainfont{Monaco.ttf}{#1}\end{spacing}}}  % 測資、程式碼字體
+\newcommand{\bd}[1]{{\setmainfont{DIN-BoldAlternate Regular.otf}{\CJKfamily{\chfont}#1}}}  % 題目字體
+
+\newenvironment{tests}
+    {\VerbatimEnvironment\setlength\parindent{0pt} \setmainfont{Monaco.ttf} \fontsize{11}{11}\selectfont\begin{Verbatim}}% \begin{tests}
+    {\end{Verbatim}\par\normalsize}% \end{tests}
+
+\newenvironment{mycenter}[1][\topsep]
+    {\setlength{\topsep}{#1}\par\kern\topsep\centering}% \begin{mycenter}[<len>]
+    {\par\kern\topsep}% \end{mycenter}
+
+\newcommand{\ContestName}{$111$ 學年度板橋高中資訊學科能力競賽 Round $1$}
+\newcommand{\Logo}{\includegraphics[width=2.4cm]{logo.png}}
+
+\newcommand\AtPageUpperRight[1]{\AtPageUpperLeft{\put(\LenToUnit{0.83\paperwidth},\LenToUnit{-2.7cm}){#1}}}
+
+\newcommand{\newblank}{\newpage\begin{center}\hspace{0pt}\vfill{\fontfamily{cmr}\selectfont\textit{\Large{This page is intentionally left blank.}}}\vfill\hspace{0pt}\end{center}}
+
+%%% 重定義一些 command %%%
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\Q}{\mathbb{Q}}
+\newcommand{\R}{\mathbb{R}}
+\renewcommand{\C}{\mathbb{C}}
+\newcommand{\F}{\mathbb{F}}
+\renewcommand{\O}{\mathcal{O}}
+\newcommand{\floor}[1]{\left\lfloor{#1}\right\rfloor}
+\newcommand{\ceil}[1]{\left\lceil{#1}\right\rceil}
+\newcommand{\link}[2]{\href{#1}{\textcolor{cyan}{\underline{#2}}}}
+
+\pagestyle{fancy}
+\lhead{\ContestName}
+\renewcommand{\headrulewidth}{0pt}
+\AddToShipoutPictureBG{\AtPageUpperRight{\put(20, -5)\Logo}}
+\renewcommand{\arraystretch}{0.8}
+
+\definecolor{codegreen}{rgb}{0,0.6,0}
+\definecolor{codegray}{rgb}{0.5,0.5,0.5}
+\definecolor{codebrown}{rgb}{0.56, 0.08, 0.0}
+\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
+
+\lstdefinestyle{code}{
+%    backgroundcolor = \color{backcolour},
+    commentstyle = \color{codegreen},
+    keywordstyle = \color{codebrown},
+    numberstyle = \tiny\color{codegray},
+    stringstyle = \color{codepurple},
+    basicstyle = \ttfamily\footnotesize,
+    breakatwhitespace = false,
+    breaklines = true,
+    captionpos = b,
+%    frame = single,
+    keepspaces = true,
+    showspaces = false,
+    showstringspaces = false,
+    showtabs = false,
+    tabsize = 4
+}
+
+\lstset{style = code}
